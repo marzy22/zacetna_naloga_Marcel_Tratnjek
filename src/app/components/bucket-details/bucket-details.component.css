@@ -1,0 +1,36 @@
+.files-container {
+  margin-top: 2em;
+}
+
+.file-btn-content {
+  text-align: right;
+}
+
+.table-files-container {
+  margin-top: 1em;
+}
+
+.btn-delete {
+  margin-right: 7px;
+}
+
+.file-icon {
+  font-size: 23px;
+}
+
+.tab-content {
+  background-color: white;
+  padding: 2em;
+}
+
+.bucket-details-title {
+  text-align: right;
+}
+
+.bucket-details-left-content {
+  padding-right: 3em;
+}
+
+.bucket-delete-content {
+  text-align: right;
+}

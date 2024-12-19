@@ -1,0 +1,117 @@
+<h3>{{bucket?.name}}</h3>
+
+<div class="grid files-container">
+    <!-- Nav Tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link active"
+          id="files-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#files"
+          type="button"
+          role="tab"
+          aria-controls="files"
+          aria-selected="true"
+        >
+          Files
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="bucket-details-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#bucket-details"
+          type="button"
+          role="tab"
+          aria-controls="bucket-details"
+          aria-selected="false"
+        >
+          Bucket details
+        </button>
+      </li>
+    </ul>
+  
+    <div class="tab-content">
+      <!-- Files Tab -->
+      <div
+        class="tab-pane fade show active"
+        id="files"
+        role="tabpanel"
+        aria-labelledby="files-tab"
+      >
+        <div class="row justify-content-between">
+          <div class="col-2">
+            <b>All Files ({{this.bucket?.files?.length}})</b>
+          </div>
+          <div class="col-4 file-btn-content">
+            <button type="button" class="btn btn-danger btn-delete" [disabled]="!selectedFile" (click)="deleteSelectedFile()">Delete Object</button>
+            <button class="btn btn-secondary" (click)="triggerFileSelect()">Upload Object</button>
+            <input
+              type="file"
+              #fileInput
+              (change)="onFileSelected($event)"
+              class="d-none"
+            />
+          </div>
+        </div>
+        <table class="table table-hover table-files-container">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Name</th>
+              <th scope="col">Last Modified</th>
+              <th scope="col">Size</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let file of bucket?.files; let i = index"
+              (click)="selectFile(file, i)"
+              [class.table-active]="selectedFileIndex === i"
+              style="cursor: pointer;"
+            >
+              <td><i class="bi bi-file-earmark-text-fill file-icon"></i></td>
+              <td>{{ file.name }}</td>
+              <td>{{ file.lastModified | date: 'dd.MM.yyyy' }}</td>
+              <td>{{ file.size || 0 | fileSize }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        
+      </div>
+  
+      <!-- Bucket Details Tab -->
+      <div
+        class="tab-pane fade"
+        id="bucket-details"
+        role="tabpanel"
+        aria-labelledby="bucket-details-tab"
+      >
+      <div class="row">
+        <div class="col-12 bucket-delete-content">
+          <button type="button" class="btn btn-danger" (click)="deleteBucket()">Delete Bucket</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2 bucket-details-left-content">
+          <p class="bucket-details-title"><strong>Bucket name:</strong></p>
+          <p class="bucket-details-title"><strong>Location:</strong></p>
+          <p class="bucket-details-title"><strong>Storage size:</strong></p>
+        </div>
+        <div class="col-2">
+          <p>{{ bucket?.name }}</p>
+          <p>{{ bucket?.location }}</p>
+          <p>{{ this.getTotalFileSize() || 0 | fileSize }}</p>
+        </div> 
+      </div>
+      
+      </div>
+    </div>
+</div>
+<div class="mt-3">
+  <button type="button" class="btn btn-secondary" (click)="onGoBack()">Go back</button>
+</div>
+

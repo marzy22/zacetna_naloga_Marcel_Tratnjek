@@ -1,0 +1,48 @@
+{
+  "buckets": [
+    {
+      "id": "2",
+      "name": "test123",
+      "location": "Maribor",
+      "files": [
+        {
+          "name": "Hišica 2_osencena_2.jpg",
+          "lastModified": "2024-07-18T17:02:43.762Z",
+          "size": 2102,
+          "type": "image/jpeg"
+        },
+        {
+          "name": "hišica1_osencena_1.jpg",
+          "lastModified": "2024-07-18T16:43:14.532Z",
+          "size": 2474,
+          "type": "image/jpeg"
+        },
+        {
+          "name": "miselni vzorec za spl.stran (2).jpg",
+          "lastModified": "2024-07-16T17:23:14.555Z",
+          "size": 2614,
+          "type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Marcel Tratnjek",
+      "location": "Ljubljana",
+      "files": [
+        {
+          "name": "hišica1_osencena_1.jpg",
+          "lastModified": "2024-07-18T16:43:14.532Z",
+          "size": 2474,
+          "type": "image/jpeg"
+        },
+        {
+          "name": "Hišice_3_osencena_3.jpg",
+          "lastModified": "2024-07-18T16:33:11.319Z",
+          "size": 3391,
+          "type": "image/jpeg"
+        }
+      ]
+    }
+  ]
+}

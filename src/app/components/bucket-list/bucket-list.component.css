@@ -1,0 +1,27 @@
+.title {
+  color: white;
+  text-align: left;
+}
+
+.bucket-list-container {
+  background-color: white;
+  padding: 2em;
+  margin-top: 25px;
+}
+
+.bucket-list-create {
+  background-color: white;
+  padding: 2em;
+}
+
+.table-content {
+  padding-top: 2em;
+}
+
+.create-btn-content {
+  text-align: right;
+}
+
+.btn-cancel-create {
+  margin-left: 8px;
+}

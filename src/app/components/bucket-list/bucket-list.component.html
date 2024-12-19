@@ -1,0 +1,75 @@
+<h3>Bucket list</h3>
+
+<div class="grid" *ngIf="this.createNewEmitted">
+  <span>Create New Bucket</span>
+  <div class="bucket-list-create">
+    <form class="row g-3" [formGroup]="bucketForm" (ngSubmit)="onSubmit()">
+      <div class="col-6">
+        <label for="name" class="form-label">Bucket Name*</label>
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          formControlName="name"
+          [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
+        />
+        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+          <div *ngIf="f['name'].errors?.['required']">Name is required.</div>
+        </div>
+      </div>
+  
+      <div class="col-6">
+        <label for="location" class="form-label">Bucket Location*</label>
+        <select
+          id="location"
+          class="form-control"
+          formControlName="location"
+          [ngClass]="{ 'is-invalid': submitted && f['location'].errors }"
+        >
+          <option value="" disabled selected>Select Location</option>
+          <option *ngFor="let location of locations" [value]="location">
+            {{ location }}
+          </option>
+        </select>
+        <div *ngIf="submitted && f['location'].errors" class="invalid-feedback">
+          <div *ngIf="f['location'].errors?.['required']">Location is required.</div>
+        </div>
+      </div>
+  
+      <div class="col-12">
+        <button type="submit" class="btn btn-secondary">Create Bucket</button>
+        <button type="button" class="btn btn-danger btn-cancel-create" (click)="this.onCancelCreate()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="grid bucket-list-container">
+  <div class="row justify-content-between">
+    <div class="col-2">
+      <b>All Buckets ({{this.buckets.length}})</b>
+    </div>
+    <div class="col-2 create-btn-content">
+      <button type="button" class="btn btn-secondary" (click)="this.onCreateNew()" *ngIf="!this.createNewEmitted">Create New Bucket</button>
+    </div>
+  </div>
+
+  <div class="row table-content">
+    <div class="col-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Location</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bucket of buckets">
+            <td><a [routerLink]="['/bucket', bucket.id]">{{ bucket.name }}</a></td>
+            <td>{{ bucket?.location }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
